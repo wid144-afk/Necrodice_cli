@@ -1,4 +1,5 @@
 import random
+from dice_types import NumberDie, AttackDie, WoundDie, Vehicle_Damage_Die, Vehicle_location_Die, Vehicle_Control_Die
 
 def roll_dice(amount):
     rolls = []
@@ -7,17 +8,29 @@ def roll_dice(amount):
     return rolls
 
 def main():
+    dice_options = {
+    "number": NumberDie,
+    "attack": AttackDie,
+    "wound": WoundDie,
+    "damage": Vehicle_Damage_Die,
+    "location": Vehicle_location_Die,
+    "control": Vehicle_Control_Die
+}
+
     while True:
         try:
-            amount = int(input("How many dice do you want to roll? "))
-            if amount < 1:
-                print("Please enter a positive integer.")
-                continue
-            break
-        except ValueError:
-            print("Invalid input. Please enter a positive integer.")
+            raw_input = input("Enter quantity and type (e.g., '3 attack'): ")
+            parts = raw_input.split() # Splits "3 attack" into ["3", "attack"]
+
+            if len(parts) == 2:
+                count = int(parts[0])
+                die_type = parts[1].lower()
     
-    rolls = roll_dice(amount)
-    print(f"You rolled: {rolls}")
+                if die_type in dice_options:
+                    die = dice_options[die_type]()
+                    for _ in range(count):
+                        print(f"Roll: {die.roll()}")
+        except ValueError:
+            print("Invalid input ganger! enter in the format '3 attack'.")
 
 main()

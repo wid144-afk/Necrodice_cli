@@ -40,5 +40,5 @@ class Vehicle_Control_Die(Die):
         super().__init__("Vehicle Control Die", outcomes)
 
 # Usage
-v_die = Vehicle_location_Die()
-print(f"Rolling {v_die.name}: {v_die.roll()}")
+#v_die = Vehicle_location_Die()
+#print(f"Rolling {v_die.name}: {v_die.roll()}")

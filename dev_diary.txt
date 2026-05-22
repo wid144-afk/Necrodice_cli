@@ -1,2 +1,3 @@
 20/05/26 - I decided to make a dice rolling app for necromunda. i setup a repository and wrote a super simple "roll" function. unfortunately VScode keeps suggesting code which is really tempting to accept but i feel would defeat the purpose of making something myself.
 21/05/26 - implemented basic parsing and dice classes
+22/05/26 - added a failure message for invalid inputs & edge cases, thinking about how to increase complexity of project

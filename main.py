@@ -7,6 +7,9 @@ def roll_dice(amount):
         rolls.append(random.randint(1, 6))
     return rolls
 
+def invalid_input():
+    print("Invalid input ganger! enter in the format '3 attack'.")
+
 def main():
     dice_options = {
     "number": NumberDie,
@@ -18,9 +21,11 @@ def main():
 }
 
     while True:
-        try:
             raw_input = input("Enter quantity and type (e.g., '3 attack'): ")
             parts = raw_input.split() # Splits "3 attack" into ["3", "attack"]
+
+            if len(parts) == 1:
+                parts = ["1"] + parts # If only "attack" is entered, treat it as "1 attack"
 
             if len(parts) == 2:
                 count = int(parts[0])
@@ -30,7 +35,10 @@ def main():
                     die = dice_options[die_type]()
                     for _ in range(count):
                         print(f"Roll: {die.roll()}")
-        except ValueError:
-            print("Invalid input ganger! enter in the format '3 attack'.")
+                else:
+                    invalid_input()
+
+            else:
+                invalid_input()
 
 main()

@@ -2,3 +2,4 @@
 21/05/26 - implemented basic parsing and dice classes
 22/05/26 - added a failure message for invalid inputs & edge cases, thinking about how to increase complexity of project
 23/05/26 - no time to work on project today, still pondering how to make it more robust. maybe multiple rolls at once?
+24/05/26 - added functionality for multiple commands. easeir than i thought. only 3 hours logged. should look to increase complexity.

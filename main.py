@@ -21,24 +21,26 @@ def main():
 }
 
     while True:
-            raw_input = input("Enter quantity and type (e.g., '3 attack'): ")
-            parts = raw_input.split() # Splits "3 attack" into ["3", "attack"]
+            raw_input = input("Enter quantity and type (e.g., '3 attack, 2 damage'): ")
+            commands = raw_input.split(",")
+            for command in commands:
+                parts = command.split() # Splits "3 attack" into ["3", "attack"]
 
-            if len(parts) == 1:
-                parts = ["1"] + parts # If only "attack" is entered, treat it as "1 attack"
+                if len(parts) == 1:
+                    parts = ["1"] + parts # If only "attack" is entered, treat it as "1 attack"
 
-            if len(parts) == 2:
-                count = int(parts[0])
-                die_type = parts[1].lower()
-    
-                if die_type in dice_options:
-                    die = dice_options[die_type]()
-                    for _ in range(count):
-                        print(f"Roll: {die.roll()}")
+                if len(parts) == 2:
+                    count = int(parts[0])
+                    die_type = parts[1].lower()
+        
+                    if die_type in dice_options:
+                        die = dice_options[die_type]()
+                        for _ in range(count):
+                            print(f"Roll: {die.roll()}")
+                    else:
+                        invalid_input()
+
                 else:
                     invalid_input()
-
-            else:
-                invalid_input()
 
 main()

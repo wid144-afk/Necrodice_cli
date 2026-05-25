@@ -25,6 +25,14 @@ def main():
             commands = raw_input.split(",")
             for command in commands:
                 parts = command.split() # Splits "3 attack" into ["3", "attack"]
+                
+                if raw_input.lower() == "help":
+                    print("\n--- Available Necromunda Dice ---")
+                    for key in dice_options:
+                        temp_die = dice_options[key]()
+                        print(f"- {key}: {temp_die.name}")
+                        print("---------------------------------\n")
+                        continue # Go back to the start of the loop
 
                 if len(parts) == 1:
                     parts = ["1"] + parts # If only "attack" is entered, treat it as "1 attack"

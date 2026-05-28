@@ -6,3 +6,4 @@
 25/05/26 - added 'help' functionality that displays the input options- little bug where it then says the input was invalid. will need to fix that.
 26/05/26 - fixed help bug
 27/05/26 - considering a "reroll" mechanic. thinking about how i'd do that.
+28/05/26 - added a reroll feature.

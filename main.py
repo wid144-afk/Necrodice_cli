@@ -11,6 +11,7 @@ def invalid_input():
     print("Invalid input ganger! enter in the format '3 attack'.")
 
 def main():
+    last_command = ""
     dice_options = {
     "number": NumberDie,
     "attack": AttackDie,
@@ -23,6 +24,7 @@ def main():
     while True:
             raw_input = input("Enter quantity and type (e.g., '3 attack, 2 damage'): ")
             commands = raw_input.split(",")
+            
             if raw_input.lower() == "help":
                 print("\n--- Available Necromunda Dice ---")
                 for key in dice_options:
@@ -30,6 +32,15 @@ def main():
                     print(f"- {key}: {temp_die.name}")
                 print("---------------------------------\n")
                 continue # Go back to the start of the loop
+
+            if raw_input.lower() == "reroll":
+                if not last_command:
+                    print("Nothing to reroll, ganger!")
+                    continue
+                commands = last_command
+            else:
+                # Save the command ONLY if it's not a reroll or help
+                last_command = commands 
 
             for command in commands:
                 parts = command.split() # Splits "3 attack" into ["3", "attack"]
